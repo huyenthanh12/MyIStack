@@ -1,5 +1,3 @@
-package com.example.istack;
-
 import java.util.List;
 
 public class StackEmptyException<T> {

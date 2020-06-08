@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.istack.StackEmptyException;
-
 public class IStack<T> {
 
     private List<T> stackNumber = new ArrayList<>();
