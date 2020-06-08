@@ -1,10 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.istack.StackEmptyException;
+
 public class IStack<T> {
 
     private List<T> stackNumber = new ArrayList<>();
-    
+    private StackEmptyException errorMessage = new StackEmptyException<>();
+
     public void push(T x) {
         stackNumber.add(x);
     }
@@ -12,7 +15,7 @@ public class IStack<T> {
     public T pop() {
         
         if (isEmpty()) {
-            return null;
+            return (T) errorMessage.stackEmptyString(stackNumber);
         }
         int topIndex = stackNumber.size() - 1;
 

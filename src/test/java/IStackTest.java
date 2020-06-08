@@ -25,7 +25,7 @@ public class IStackTest {
         
         IStack<Integer> stackNumber = new IStack<>();
 
-        assertNull(stackNumber.pop());
+        assertEquals(stackNumber.pop(), "Stack is empty now");
         
         stackNumber.push(56);
         stackNumber.push(65);
