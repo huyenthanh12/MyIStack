@@ -4,22 +4,23 @@ import java.util.List;
 public class IStack<T> {
 
     private List<T> stackNumber = new ArrayList<>();
-    private StackEmptyException errorMessage = new StackEmptyException<>();
+
 
     public void push(T x) {
         stackNumber.add(x);
     }
 
-    public T pop() {
+    public T pop() throws StackEmptyException {
         
-        if (isEmpty()) {
-            return (T) errorMessage.stackEmptyString(stackNumber);
-        }
+        if (stackNumber.isEmpty()) {
+            throw new StackEmptyException("error");
+        }      
+
         int topIndex = stackNumber.size() - 1;
 
         T result = stackNumber.get(topIndex);
         stackNumber.remove(result);
-
+        
         return result;
     }
 

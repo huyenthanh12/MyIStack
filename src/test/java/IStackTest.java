@@ -1,6 +1,7 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -21,19 +22,20 @@ public class IStackTest {
     }
 
     @Test
-    public void test_pop() {
+    public void test_pop() throws StackEmptyException {
         
         IStack<Integer> stackNumber = new IStack<>();
 
-        assertEquals(stackNumber.pop(), "Stack is empty now");
-        
+        Throwable exception = assertThrows(StackEmptyException.class, () -> stackNumber.pop());
+        assertEquals("Stack is empty now", exception.getMessage());
+            
         stackNumber.push(56);
         stackNumber.push(65);
         assertEquals(stackNumber.pop(), 65);
     }
 
     @Test
-    public void test_isEmpty() {
+    public void test_isEmpty() throws StackEmptyException {
 
         IStack<Integer> stackNumber = new IStack<>();
 
@@ -74,7 +76,7 @@ public class IStackTest {
 
     @Test
     public void test_peek() {
-        
+      
         IStack<Integer> stackNumber = new IStack<>();
 
         assertNull(stackNumber.peek());
